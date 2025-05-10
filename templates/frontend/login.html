@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}" />
+  <title>Вход</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;550;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/vars.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/scrollbar.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+  <script src="{{ url_for('static', filename='js/header.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/burger.js') }}" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo animated-header">
+      <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" width="32" height="32" />
+      <span class="logo-text">header</span>
+    </div>
+  
+    <nav class="nav-links animated-header">
+      <span><a href="{{ url_for('frontend.index') }}" class="nav-link">Главная</a></span>
+      <span><a href="{{ url_for('frontend.tour') }}" class="nav-link">Мероприятия</a></span>
+      <span><a href="{{ url_for('frontend.places') }}" class="nav-link">Места</a></span>
+      <span><a href="{{ url_for('frontend.contacts') }}" class="nav-link contact-link">Контакты</a></span>
+      <span>
+        <a href="{{ url_for('frontend.login') }}" class="btn cta-button">Войти</a>
+      </span>
+      <span>
+        <a href="{{ url_for('frontend.register') }}" class="btn secondary-button">Регистрация</a>
+      </span>
+    </nav>
+  
+    <button class="burger animated-header" id="burgerBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="desctop-sign-up">
+    <div class="sign-up">
+      <div class="div">Вход</div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      <form method="POST" action="{{ url_for('frontend.login') }}" class="login-form">
+        {{ form.csrf_token }}
+        <div class="text-field">
+          <div class="text-field2">
+            <div class="container-content">
+              {{ form.username(class="text-field-text", placeholder="Логин") }}
+              {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                  <span class="error">{{ error }}</span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="text-field">
+          <div class="text-field2">
+            <div class="container-content">
+              {{ form.password(class="text-field-text", placeholder="Пароль") }}
+              {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                  <span class="error">{{ error }}</span>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="button">
+          {{ form.submit(class="button2") }}
+        </div>
+      </form>
+      <div class="button3">
+        <a href="{{ url_for('frontend.register') }}" class="button4">Нет аккаунта? Зарегистрироваться</a>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .desctop-sign-up {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f1f4f8;
+      padding: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .logo2 {
+      font-size: 24px;
+      font-weight: 500;
+      color: #1f1f1f;
+    }
+
+    .logo3 {
+      width: 32px;
+      height: 32px;
+    }
+
+    .sign-up {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .div {
+      font-size: 24px;
+      font-weight: 500;
+      color: #1f1f1f;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .text-field {
+      margin-bottom: 20px;
+    }
+
+    .text-field2 {
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .container-content {
+      padding: 12px;
+    }
+
+    .text-field-text {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      color: #1f1f1f;
+    }
+
+    .text-field-text::placeholder {
+      color: #999;
+    }
+
+    .error {
+      color: #fd453b;
+      font-size: 14px;
+      margin-top: 5px;
+      display: block;
+    }
+
+    .button {
+      margin-top: 30px;
+    }
+
+    .button2 {
+      width: 100%;
+      padding: 12px;
+      background-color: #3575FF;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .button2:hover {
+      background-color: #2661E2;
+    }
+
+    .button3 {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .button4 {
+      color: #3575FF;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s ease;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .button4:hover {
+      color: #2661E2;
+    }
+
+    .alert {
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .alert-success {
+      background-color: #32d47d;
+      color: white;
+    }
+
+    .alert-error {
+      background-color: #fd453b;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .sign-up {
+        padding: 20px;
+      }
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .cta-button {
+      background-color: #3575FF;
+      color: #FFFFFF;
+    }
+
+    .cta-button:hover {
+      background-color: #2661E2;
+    }
+
+
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+  </style>
+</body>
+</html>

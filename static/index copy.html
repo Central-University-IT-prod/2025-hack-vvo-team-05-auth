@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Scroll Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #111;
+    }
+
+    .spacer {
+      height: 100vh;
+      background: #222;
+    }
+
+    .about-section {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      background-color: #6775FF;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+      overflow: hidden;
+      box-shadow: 0 0 128px 0 #04050D;
+      z-index: 3;
+      flex-direction: column;
+    }
+
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .animated-line {
+      overflow: hidden;
+      height: 40px;
+    }
+
+    .animated-line span,
+    .side-text span {
+      display: inline-block;
+      font-size: 32px;
+      font-weight: 550;
+      transform: translateY(100%);
+      opacity: 0;
+    }
+
+    .animated-line span.visible,
+    .side-text span.visible {
+      animation: slideUp 1s ease-out forwards;
+    }
+
+    .animated-line:nth-child(1) span.visible { animation-delay: 0.2s; }
+    .animated-line:nth-child(2) span.visible { animation-delay: 0.4s; }
+    .animated-line:nth-child(3) span.visible { animation-delay: 0.6s; }
+
+    .side-text {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 48px;
+      font-weight: 600;
+      pointer-events: none;
+      overflow: hidden;
+      height: 60px;
+      z-index: 1;
+    }
+
+    .side-text.left {
+      left: 40px;
+    }
+
+    .side-text.right {
+      right: 40px;
+    }
+
+    .side-text span.visible {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes slideUp {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="spacer"></div> <!-- чтобы была прокрутка -->
+
+  <section class="about-section">
+    <div class="side-text left"><span>About</span></div>
+    <div class="side-text right"><span>Us</span></div>
+
+    <div class="center-content">
+      <div class="animated-line"><span>First Text Block</span></div>
+      <div class="animated-line"><span>Second Text Block</span></div>
+      <div class="animated-line"><span>Third Text Block</span></div>
+    </div>
+  </section>
+
+  <div class="spacer"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll('.animated-line span, .side-text span');
+
+      function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+      }
+
+      function triggerAnimations() {
+        elements.forEach(el => {
+          if (!el.classList.contains('visible') && isInViewport(el)) {
+            el.classList.add('visible');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', triggerAnimations);
+      window.addEventListener('resize', triggerAnimations);
+      triggerAnimations(); // Initial call
+    });
+  </script>
+</body>
+</html>

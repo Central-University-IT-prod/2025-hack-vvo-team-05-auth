@@ -1,0 +1,218 @@
+openapi: 3.0.0
+info:
+  title: Travel Application API
+  description: API for a travel application with user authentication and content management
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+  - url: https://your-production-url.com
+    description: Production server
+
+tags:
+  - name: Authentication
+    description: User registration and login
+  - name: Content
+    description: Travel content pages
+  - name: Static
+    description: Static file serving
+
+paths:
+  /frontend/:
+    get:
+      tags: [Content]
+      summary: Home page
+      description: Returns the application's home page
+      responses:
+        '200':
+          description: HTML content of the home page
+          content:
+            text/html:
+              example: "<html>...</html>"
+
+  /frontend/login:
+    get:
+      tags: [Authentication]
+      summary: Show login form
+      description: Returns the login page
+      responses:
+        '200':
+          description: HTML content of the login page
+          content:
+            text/html:
+              example: "<html>...</html>"
+    post:
+      tags: [Authentication]
+      summary: Process login
+      description: Authenticate user credentials
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: "user123"
+                password:
+                  type: string
+                  example: "securepassword123"
+                submit:
+                  type: string
+                  example: "Login"
+      responses:
+        '302':
+          description: Redirect on successful login
+          headers:
+            Location:
+              schema:
+                type: string
+                example: "/frontend/"
+        '200':
+          description: Show login form with errors
+          content:
+            text/html:
+              example: "<html>...</html>"
+
+  /frontend/register:
+    get:
+      tags: [Authentication]
+      summary: Show registration form
+      description: Returns the registration page
+      responses:
+        '200':
+          description: HTML content of the registration page
+          content:
+            text/html:
+              example: "<html>...</html>"
+    post:
+      tags: [Authentication]
+      summary: Process registration
+      description: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: "newuser"
+                password:
+                  type: string
+                  example: "securepassword123"
+                confirm_password:
+                  type: string
+                  example: "securepassword123"
+                submit:
+                  type: string
+                  example: "Register"
+      responses:
+        '302':
+          description: Redirect on successful registration
+          headers:
+            Location:
+              schema:
+                type: string
+                example: "/frontend/login"
+        '200':
+          description: Show registration form with errors
+          content:
+            text/html:
+              example: "<html>...</html>"
+
+  /frontend/tour:
+    get:
+      tags: [Content]
+      summary: Tour page
+      description: Returns the tour information page
+      responses:
+        '200':
+          description: HTML content of the tour page
+          content:
+            text/html:
+              example: "<html>...</html>"
+
+  /frontend/places:
+    get:
+      tags: [Content]
+      summary: Places page
+      description: Returns the places information page
+      responses:
+        '200':
+          description: HTML content of the places page
+          content:
+            text/html:
+              example: "<html>...</html>"
+
+  /frontend/contacts:
+    get:
+      tags: [Content]
+      summary: Contacts page
+      description: Returns the contacts page
+      responses:
+        '200':
+          description: HTML content of the contacts page
+          content:
+            text/html:
+              example: "<html>...</html>"
+
+  /static/{filename}:
+    get:
+      tags: [Static]
+      summary: Serve static files
+      description: Returns requested static files
+      parameters:
+        - name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "styles.css"
+      responses:
+        '200':
+          description: The requested static file
+          content:
+            '*/*':
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: File not found
+
+  /dashboard:
+    get:
+      tags: [Content]
+      summary: Dashboard page
+      description: Returns the user dashboard (protected)
+      responses:
+        '200':
+          description: HTML content of the dashboard
+          content:
+            text/html:
+              example: "<html>...</html>"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: "user123"
+        created_at:
+          type: string
+          format: date-time
+          example: "2023-01-01T12:00:00Z"
+
+  securitySchemes:
+    sessionCookie:
+      type: apiKey
+      in: cookie
+      name: session
+      description: Session cookie for authenticated users

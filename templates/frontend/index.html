@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/favicon.svg') }}" />
+  <title>Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;550;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/vars.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/scrollbar.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/components/header.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/page/home.css') }}">
+  <script src="{{ url_for('static', filename='js/header.js') }}" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo animated-header">
+      <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" width="32" height="32" />
+      <span class="logo-text">header</span>
+    </div>
+  
+    <nav class="nav-links animated-header">
+      <span><a href="{{ url_for('frontend.index') }}" class="nav-link {% if request.endpoint == 'frontend.index' %}active{% endif %}">Главная</a></span>
+      <span><a href="{{ url_for('frontend.tour') }}" class="nav-link {% if request.endpoint == 'frontend.tour' %}active{% endif %}">Мероприятия</a></span>
+      <span><a href="{{ url_for('frontend.places') }}" class="nav-link {% if request.endpoint == 'frontend.places' %}active{% endif %}">Места</a></span>
+      <span><a href="{{ url_for('frontend.contacts') }}" class="nav-link contact-link {% if request.endpoint == 'frontend.contacts' %}active{% endif %}">Контакты</a></span>
+      <span>
+        <a href="{{ url_for('frontend.login') }}" class="btn cta-button">Войти</a>
+      </span>
+      <span>
+        <a href="{{ url_for('frontend.register') }}" class="btn secondary-button">Регистрация</a>
+      </span>
+    </nav>
+  
+    <button class="burger animated-header" id="burgerBtn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  
+  <!-- Overlay Menu -->
+  <div class="overlay-menu" id="overlayMenu">
+    <div class="overlay-content">
+      <!-- Services column -->
+      <div class="overlay-column">
+        <div class="title">Услуги</div>
+        <a href="#">Отдых</a>
+        <a href="#">Концерты</a>
+        <a href="#">Муроприятия</a>
+      </div>
+  
+      <!-- Navigation column -->
+      <div class="overlay-column">
+        <div class="title">Навигация</div>
+        <a href="{{ url_for('frontend.index') }}" class="{% if request.endpoint == 'frontend.index' %}active{% endif %}">Главная <span class="arrow">→</span></a>
+        <a href="{{ url_for('frontend.tour') }}" class="{% if request.endpoint == 'frontend.tour' %}active{% endif %}">Мероприятия <span class="arrow">→</span></a>
+        <a href="{{ url_for('frontend.places') }}" class="{% if request.endpoint == 'frontend.places' %}active{% endif %}">Места <span class="arrow">→</span></a>
+        <a href="{{ url_for('frontend.contacts') }}" class="{% if request.endpoint == 'frontend.contacts' %}active{% endif %}">Контакты <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay Menu -->
+  <div class="overlay-menu" id="overlayMenu">
+    <div class="overlay-content">
+      <!-- Services column -->
+      <div class="overlay-column">
+        <div class="title">Услуги</div>
+        <a href="#">Отдых</a>
+        <a href="#">Концерты</a>
+        <a href="#">Муроприятия</a>
+      </div>
+  
+      <!-- Navigation column -->
+      <div class="overlay-column">
+        <div class="title">Навигация</div>
+        <a href="#" class="active">Главная <span class="arrow">→</span></a>
+        <a href="#" class="menu-label">Мероприятия <span class="arrow">→</span></a>
+        <a href="#" class="menu-label">Места <span class="arrow">→</span></a>
+        <a href="#" class="menu-label">Контакты <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section class="video-section">
+    <div class="overlay">
+      <div class="text-line">
+        <span>Тур-агентство — hover</span>
+      </div>
+      <div class="text-line">
+        <span>твой путь на Дальний Восток</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="animated-heading">
+      <h2 class="center-heading"><span>Что мы делаем?</span></h2>
+    </div>
+
+    <div class="center-content">
+      <div class="animated-line"><span>Устраиваем туры по Дальнему востоку</span></div>
+      <div class="animated-line"><span>включая: походы на в театры, музеи, концерты,</span></div>
+      <div class="animated-line"><span>а также рассказываем истори о городе</span></div>
+    </div>
+
+    <div class="animated-footer">
+      <a href="#" class="footer-link">Hover!</a>
+    </div>
+  </section>
+
+  <section class="transition-section">
+    <div class="transition-content">
+      <h2 class="transition-text">Остались вопросы?</h2>
+      <a href="mailto:hello@hover.ru" class="transition-email">hello@hover.ru</a>
+    </div>
+  </section>
+
+  <section class="slider-section">
+    <div class="overlay">
+      <div class="text-line">
+        <span>Тур-агентство — hover</span>
+      </div>
+      <div class="text-line">
+        <span>твой путь на Дальний Восток</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Header animation
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.header .animated-header span').forEach(span => {
+        span.classList.add('visible');
+      });
+    });
+
+    // About section animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const aboutElements = document.querySelectorAll('.animated-line span, .center-heading span, .animated-footer, .transition-text, .transition-email');
+      const videoOverlay = document.querySelector('.video-section .overlay');
+      
+      function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+      }
+      
+      function triggerAnimations() {
+        aboutElements.forEach(el => {
+          if (!el.classList.contains('visible') && isInViewport(el)) {
+            el.classList.add('visible');
+          }
+        });
+
+        // Проверяем видимость about секции
+        const aboutSection = document.querySelector('.about-section');
+        const aboutRect = aboutSection.getBoundingClientRect();
+        
+        if (aboutRect.top <= 0) {
+          videoOverlay.classList.add('hidden');
+        } else {
+          videoOverlay.classList.remove('hidden');
+        }
+      }
+      
+      // Запускаем анимацию сразу при загрузке
+      triggerAnimations();
+      
+      // И при скролле
+      window.addEventListener('scroll', triggerAnimations);
+      window.addEventListener('resize', triggerAnimations);
+    });
+
+    // Burger menu
+    document.addEventListener('DOMContentLoaded', () => {
+      const burgerBtn = document.getElementById('burgerBtn');
+      const overlayMenu = document.getElementById('overlayMenu');
+      const spans = burgerBtn.querySelectorAll('span');
+
+      // Create icon wrapper
+      const iconWrapper = document.createElement('div');
+      iconWrapper.classList.add('icon');
+
+      // Move spans to icon wrapper
+      spans.forEach((span, i) => {
+        if (i < 3) iconWrapper.appendChild(span);
+      });
+
+      // Insert icon wrapper before any existing content
+      burgerBtn.insertBefore(iconWrapper, burgerBtn.firstChild);
+
+      // Toggle menu
+      burgerBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        burgerBtn.classList.toggle('open');
+        overlayMenu.classList.toggle('open');
+        document.body.style.overflow = overlayMenu.classList.contains('open') ? 'hidden' : '';
+      });
+    });
+
+    // Header visibility on scroll
+    const header = document.querySelector('.header');
+    const transitionSection = document.querySelector('.transition-section');
+
+    const toggleHeaderVisibility = () => {
+      const rect = transitionSection.getBoundingClientRect();
+      const sectionHeight = rect.height;
+      const scrollPosition = window.innerHeight - rect.top;
+      const scrollPercentage = (scrollPosition / sectionHeight) * 100;
+
+      if (scrollPercentage >= 50) {
+        header.style.transform = 'translateY(-100%)';
+        header.style.transition = 'transform 0.4s ease';
+        // Открываем бургер-меню
+        burgerBtn.classList.add('open');
+        overlayMenu.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      } else {
+        header.style.transform = 'translateY(0)';
+        header.style.transition = 'transform 0.4s ease';
+        // Закрываем бургер-меню
+        burgerBtn.classList.remove('open');
+        overlayMenu.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    };
+
+    window.addEventListener('scroll', toggleHeaderVisibility);
+
+    const slidesWrapper = document.querySelector('.slides'); // вместо id
+    const slides = slidesWrapper.querySelectorAll('.slide');
+    const slideWidth = 800; // ширина одного слайда
+
+    let currentIndex = 0; // первый слайд активный
+
+    function updateSlides() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('left', 'active', 'right');
+        if (index === currentIndex - 1) slide.classList.add('left');
+        if (index === currentIndex) slide.classList.add('active');
+        if (index === currentIndex + 1) slide.classList.add('right');
+      });
+
+      const offset = slideWidth * currentIndex - (document.querySelector('.slider-wrapper').offsetWidth - slideWidth) / 2;
+      slidesWrapper.style.transform = `translateX(-${offset}px)`;
+    }
+
+    document.querySelector('.slider-button.prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlides();
+    });
+
+    document.querySelector('.slider-button.next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlides();
+    });
+
+    updateSlides();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(
+      '.animated-line span, .side-text span, .center-heading span, .scroll-text span, .footer-link, .footer-link span, .animated-footer'
+    );
+      function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+      }
+
+      function triggerAnimations() {
+        elements.forEach(el => {
+          if (!el.classList.contains('visible') && isInViewport(el)) {
+            el.classList.add('visible');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', triggerAnimations);
+      window.addEventListener('resize', triggerAnimations);
+      triggerAnimations(); // Initial call
+    });
+  </script>
+</body>
+
+<style>
+/* Header Styles */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  color: #1F1F1F;
+  font-family: 'Montserrat', sans-serif;
+  transition: transform 0.6s ease;
+  will-change: transform, opacity;
+}
+
+/* Исчезновение при скролле */
+.header.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* Анимация появления */
+.header .logo,
+.header .nav-links,
+.header .burger {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 0.8s ease-out forwards;
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  mask-image: linear-gradient(to top, transparent 0%, black 40%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+}
+
+.header .logo {
+  animation-delay: 0.2s;
+}
+
+.header .nav-links {
+  animation-delay: 0.4s;
+}
+
+.header .burger {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeSlideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  gap: 16px;
+}
+
+.logo-text {
+  transform: translateY(-3px);
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: #1F1F1F;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0%;
+  background-color: #1F1F1F;
+  transition: width 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active::after {
+  width: 100%;
+  transition: none;
+}
+
+.nav-link.active:hover::after {
+  animation: underline-slide-reset 0.6s forwards;
+}
+
+@keyframes underline-slide-reset {
+  0% {
+    width: 100%;
+    left: 0;
+  }
+  49% {
+    width: 0%;
+    left: 100%;
+  }
+  50% {
+    width: 0%;
+    left: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+.contact-link {
+  margin-left: 75px;
+  margin-right: 75px;
+}
+
+.burger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  z-index: 11;
+  position: fixed;
+  top: 40px;
+  right: 40px;
+}
+
+.burger .icon {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #1F1F1F;
+  transition: all 0.3s ease;
+}
+
+/* Анимация "крестика" */
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background-color: #FFF;
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+  background-color: #FFF;
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background-color: #FFF;
+}
+
+/* Overlay */
+.overlay-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: #0A0B12;
+  z-index: 9;
+  transform: translateY(0);
+  transition: top 0.5s ease-in-out;
+  padding: 120px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-menu.open {
+  top: 0;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start; /* выравнивание по верхнему краю */
+  gap: 50px;
+}
+
+.overlay-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay-column .title {
+  font-size: 20px;
+  opacity: 0.5;
+  margin-bottom: 20px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.overlay-column a {
+  font-size: 32px;
+  text-decoration: none;
+  color: white;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.overlay-column a.active {
+  color:hsl(209, 96%, 50%);
+  font-weight: 600;
+}
+
+.menu-label {
+  transition: color 0.3s ease;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  display: none;
+  cursor: pointer;
+}
+
+.menu-label.show {
+  display: inline-block;
+  animation: fadeSlideUp 0.8s ease-out forwards;
+}
+
+.burger-text {
+  display: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.burger.desktop-show {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+}
+
+.burger.desktop-show .burger-text {
+  display: inline-block;
+}
+
+.cta-button {
+  background-color: #3575FF;
+  color: #FFFFFF;
+}
+
+.cta-button:hover {
+  background-color: #2661E2;
+}
+
+.secondary-button {
+  background-color: rgba(152, 154, 162, 0.12);
+  color: #1F1F1F;
+}
+
+.secondary-button:hover {
+  background-color: rgba(152, 154, 162, 0.16);
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+/* KEYFRAMES */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes underlineExitEnter {
+  0% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  21% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  22% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* VIDEO SECTION */
+.video-section {
+  position: relative;
+  height: 100vh;
+  background-color: #F1F4F8;
+  overflow: hidden;
+}
+
+.overlay {
+  position: fixed;
+  bottom: 60px;
+  left: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+  transition: opacity 0.5s ease;
+}
+
+.overlay.hidden {
+  opacity: 0;
+}
+
+.text-line {
+  overflow: hidden;
+  height: 60px;
+  font-weight: 550;
+  margin-bottom: -5px;
+}
+
+.text-line span {
+  display: inline-block;
+  font-size: 48px;
+  transform: translateY(100%);
+  animation: slideUp 1s forwards;
+  color: #1F1F1F;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.text-line:nth-child(1) span {
+  color: hsl(209, 96%, 50%);
+  animation-delay: 0.6s;
+}
+
+.text-line:nth-child(2) span {
+  animation-delay: 0.4s;
+}
+
+/* ABOUT SECTION */
+.about-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background-color: hsl(209, 96%, 50%);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 40px;
+  overflow: hidden;
+  z-index: 3;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* CENTER CONTENT */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+/* Заголовок над текстом */
+.animated-heading {
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.center-heading {
+  font-size: 24px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.center-heading span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.center-heading span.visible {
+  animation: slideUp 1s ease-out forwards;
+}
+
+/* TEXT BLOCKS */
+.animated-line {
+  overflow: hidden;
+  height: 28px;
+}
+
+.animated-line span {
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 400;
+  transform: translateY(100%);
+  opacity: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.animated-line span.visible {
+  animation: slideUp 1s ease-out forwards;
+}
+
+.animated-line:nth-child(1) span.visible { animation-delay: 0.2s; }
+.animated-line:nth-child(2) span.visible { animation-delay: 0.4s; }
+.animated-line:nth-child(3) span.visible { animation-delay: 0.6s; }
+
+/* FOOTER */
+.animated-footer {
+  margin-top: 60px;
+  overflow: hidden;
+  height: 28px;
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.animated-footer.visible {
+  animation: slideUp 1s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+.footer-link {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transform: scaleX(1);
+  transform-origin: right;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.8s;
+}
+
+.footer-link.visible::after {
+  opacity: 1;
+}
+
+.footer-link:hover::after {
+  animation: underlineExitEnter 1.2s ease forwards;
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 100px 20px;
+  }
+
+  .center-heading {
+    font-size: 20px;
+  }
+
+  .animated-line span {
+    font-size: 20px;
+  }
+
+  .footer-link {
+    font-size: 20px;
+  }
+}
+
+/* SCROLL SECTION */
+.scroll-animation-section {
+  position: relative;
+  width: 100%;
+  height: 350vh;
+  background: white;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scrollCanvas {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+  height: auto;
+  width: auto;
+  background: transparent !important;
+  display: block;
+  margin: 0 auto;
+  max-height: 100vh;
+}
+
+.scroll-text {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+  height: 40px;
+}
+
+.scroll-text span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.scroll-text span.visible {
+  animation: slideUp 1s ease-out forwards;
+}
+
+.after-animation-placeholder {
+  height: 100vh;
+  background: #0A0B12;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .side-text {
+    font-size: 36px;
+  }
+
+  .about-section {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .center-content {
+    gap: 15px;
+  }
+
+  .about-section {
+    padding: 20px 10px;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.slider-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: #f1f4f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.slider-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.slides {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: max-content;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 1.25rem;
+  border: 1px solid rgba(23, 26, 36, 0.3);
+  border-radius: 6rem;
+  background: #ffffff;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.slider-button.prev {
+  left: 0;
+}
+
+.slider-button.next {
+  right: 0;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.slider-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+  font-family: 'PP Neue Montreal', sans-serif;
+}
+
+.info-left,
+.info-right {
+  color: rgba(23, 26, 36, 0.64);
+  font-size: 1.5rem;
+  width: 33%;
+  text-align: left;
+}
+
+.info-right {
+  text-align: right;
+}
+
+.info-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+.info-center .sub {
+  display: block;
+  font-size: 2rem;
+  color: rgba(23, 26, 36, 0.64);
+}
+
+html {
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE и Edge */
+  }
+  
+  html::-webkit-scrollbar {
+    display: none;                /* Chrome, Safari, Opera */
+  }
+  
+  body {
+    overflow-y: scroll;             /* включаем вертикальную прокрутку */
+  }
+  
+/* QUESTIONS SECTION */
+.questions-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.questions-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.questions-text-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.questions-text {
+  font-size: 48px;
+  font-weight: 500;
+  color: #1F1F1F;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0;
+  transform: translateY(100%);
+  text-align: left;
+}
+
+.questions-email {
+  font-size: 48px;
+  font-weight: 500;
+  color: #1F1F1F;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: color 0.3s ease;
+  text-align: left;
+}
+
+.questions-email:hover {
+  color: hsl(209, 96%, 50%);
+}
+
+.questions-text.visible,
+.questions-email.visible {
+  animation: slideUp 1s ease-out forwards;
+}
+
+.questions-email.visible {
+  animation-delay: 0.2s;
+}
+
+@media (max-width: 768px) {
+  .questions-text,
+  .questions-email {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .questions-text,
+  .questions-email {
+    font-size: 28px;
+  }
+}
+
+/* TRANSITION SECTION */
+.transition-section {
+  position: relative;
+  height: 150vh;
+  width: 100%;
+  background-color: hsl(209, 96%, 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.transition-content {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.transition-text {
+  font-size: 48px;
+  font-weight: 500;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  opacity: 0;
+  transform: translateY(100%);
+  text-align: left;
+}
+
+.transition-email {
+  font-size: 48px;
+  font-weight: 500;
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: color 0.3s ease;
+  text-align: left;
+}
+
+.transition-email:hover {
+  color: #FFFFFF;
+  opacity: 0.8;
+}
+
+.transition-text.visible,
+.transition-email.visible {
+  animation: slideUp 1s ease-out forwards;
+}
+
+.transition-email.visible {
+  animation-delay: 0.2s;
+}
+
+@media (max-width: 768px) {
+  .transition-text,
+  .transition-email {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .transition-text,
+  .transition-email {
+    font-size: 28px;
+  }
+}
+</style>
+</html>

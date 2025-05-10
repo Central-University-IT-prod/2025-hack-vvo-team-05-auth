@@ -1,0 +1,47 @@
+<header class="header">
+  <div class="logo animated-header">
+    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" width="32" height="32" />
+    <span class="logo-text">header</span>
+  </div>
+
+  <nav class="nav-links animated-header">
+    <span><a href="{{ url_for('frontend.index') }}" class="nav-link {% if request.endpoint == 'frontend.index' %}active{% endif %}">Главная</a></span>
+    <span><a href="{{ url_for('frontend.tour') }}" class="nav-link {% if request.endpoint == 'frontend.tour' %}active{% endif %}">Мероприятия</a></span>
+    <span><a href="{{ url_for('frontend.places') }}" class="nav-link {% if request.endpoint == 'frontend.places' %}active{% endif %}">Места</a></span>
+    <span><a href="{{ url_for('frontend.contacts') }}" class="nav-link contact-link {% if request.endpoint == 'frontend.contacts' %}active{% endif %}">Контакты</a></span>
+    <span>
+      <a href="{{ url_for('frontend.login') }}" class="btn cta-button">Войти</a>
+    </span>
+    <span>
+      <a href="{{ url_for('frontend.register') }}" class="btn secondary-button">Регистрация</a>
+    </span>
+  </nav>
+
+  <button class="burger animated-header" id="burgerBtn" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<!-- Overlay Menu -->
+<div class="overlay-menu" id="overlayMenu">
+  <div class="overlay-content">
+    <!-- Services column -->
+    <div class="overlay-column">
+      <div class="title">Услуги</div>
+      <a href="#">Отдых</a>
+      <a href="#">Концерты</a>
+      <a href="#">Муроприятия</a>
+    </div>
+
+    <!-- Navigation column -->
+    <div class="overlay-column">
+      <div class="title">Навигация</div>
+      <a href="{{ url_for('frontend.index') }}" class="{% if request.endpoint == 'frontend.index' %}active{% endif %}">Главная <span class="arrow">→</span></a>
+      <a href="{{ url_for('frontend.tour') }}" class="{% if request.endpoint == 'frontend.tour' %}active{% endif %}">Мероприятия <span class="arrow">→</span></a>
+      <a href="{{ url_for('frontend.places') }}" class="{% if request.endpoint == 'frontend.places' %}active{% endif %}">Места <span class="arrow">→</span></a>
+      <a href="{{ url_for('frontend.contacts') }}" class="{% if request.endpoint == 'frontend.contacts' %}active{% endif %}">Контакты <span class="arrow">→</span></a>
+    </div>
+  </div>
+</div>

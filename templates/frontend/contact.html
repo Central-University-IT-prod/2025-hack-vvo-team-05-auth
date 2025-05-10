@@ -1,0 +1,35 @@
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactBlocks = document.querySelectorAll('.contact-block');
+            
+            contactBlocks.forEach(block => {
+                block.addEventListener('click', async function(e) {
+                    e.preventDefault();
+                    const text = this.querySelector('.contact-text').textContent.trim();
+                    
+                    try {
+                        await navigator.clipboard.writeText(text);
+                        
+                        // Save original text
+                        const originalText = this.querySelector('.contact-text').textContent;
+                        
+                        // Change text to "Copied"
+                        this.querySelector('.contact-text').textContent = 'Copied';
+                        
+                        // Add copied class for styling
+                        this.classList.add('copied');
+                        
+                        // Reset after 2 seconds
+                        setTimeout(() => {
+                            this.querySelector('.contact-text').textContent = originalText;
+                            this.classList.remove('copied');
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

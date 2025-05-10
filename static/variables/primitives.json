@@ -1,0 +1,108 @@
+{
+  "size": {
+    "0": {
+      "$type": "number",
+      "$value": 0
+    },
+    "15": {
+      "$type": "number",
+      "$value": 1
+    },
+    "25": {
+      "$type": "number",
+      "$value": 2
+    },
+    "40": {
+      "$type": "number",
+      "$value": 3
+    },
+    "50": {
+      "$type": "number",
+      "$value": 4
+    },
+    "65": {
+      "$type": "number",
+      "$value": 5
+    },
+    "75": {
+      "$type": "number",
+      "$value": 6
+    },
+    "100": {
+      "$type": "number",
+      "$value": 8
+    },
+    "125": {
+      "$type": "number",
+      "$value": 10
+    },
+    "150": {
+      "$type": "number",
+      "$value": 12
+    },
+    "175": {
+      "$type": "number",
+      "$value": 14
+    },
+    "200": {
+      "$type": "number",
+      "$value": 16
+    },
+    "250": {
+      "$type": "number",
+      "$value": 20
+    },
+    "300": {
+      "$type": "number",
+      "$value": 24
+    },
+    "350": {
+      "$type": "number",
+      "$value": 28
+    },
+    "400": {
+      "$type": "number",
+      "$value": 32
+    },
+    "450": {
+      "$type": "number",
+      "$value": 36
+    },
+    "500": {
+      "$type": "number",
+      "$value": 40
+    },
+    "550": {
+      "$type": "number",
+      "$value": 44
+    },
+    "600": {
+      "$type": "number",
+      "$value": 48
+    },
+    "700": {
+      "$type": "number",
+      "$value": 56
+    },
+    "800": {
+      "$type": "number",
+      "$value": 64
+    },
+    "900": {
+      "$type": "number",
+      "$value": 72
+    },
+    "1000": {
+      "$type": "number",
+      "$value": 80
+    },
+    "1100": {
+      "$type": "number",
+      "$value": 88
+    },
+    "1200": {
+      "$type": "number",
+      "$value": 96
+    }
+  }
+}

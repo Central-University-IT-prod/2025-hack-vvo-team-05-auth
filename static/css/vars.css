@@ -1,0 +1,140 @@
+/* Figma Styles of your File */
+:root {
+    /* Colors */
+    --primary-color: #007AFF;
+    --secondary-color: #5856D6;
+    --success-color: #34C759;
+    --warning-color: #FF9500;
+    --danger-color: #FF3B30;
+    --dark-color: #1C1C1E;
+    --light-color: #F2F2F7;
+    --white-color: #FFFFFF;
+    --black-color: #000000;
+    --gray-color: #8E8E93;
+    
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-lg: 1.125rem;   /* 18px */
+    --font-size-xl: 1.25rem;    /* 20px */
+    --font-size-2xl: 1.5rem;    /* 24px */
+    --font-size-3xl: 1.875rem;  /* 30px */
+    --font-size-4xl: 2.25rem;   /* 36px */
+    
+    /* Font Weights */
+    --font-weight-book: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+    
+    /* Line Heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    
+    /* Spacing */
+    --spacing-1: 0.25rem;  /* 4px */
+    --spacing-2: 0.5rem;   /* 8px */
+    --spacing-3: 0.75rem;  /* 12px */
+    --spacing-4: 1rem;     /* 16px */
+    --spacing-5: 1.25rem;  /* 20px */
+    --spacing-6: 1.5rem;   /* 24px */
+    --spacing-8: 2rem;     /* 32px */
+    --spacing-10: 2.5rem;  /* 40px */
+    --spacing-12: 3rem;    /* 48px */
+    
+    /* Border Radius */
+    --border-radius-sm: 0.125rem;  /* 2px */
+    --border-radius-md: 0.25rem;   /* 4px */
+    --border-radius-lg: 0.5rem;    /* 8px */
+    --border-radius-xl: 1rem;      /* 16px */
+    --border-radius-full: 9999px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Transitions */
+    --transition-fast: 150ms;
+    --transition-normal: 300ms;
+    --transition-slow: 500ms;
+    
+    /* Fonts */
+    --title-h1-font-family: PpNeueMontreal-Bold, sans-serif;
+    --title-h1-font-size: 64px;
+    --title-h1-line-height: 110%;
+    --title-h1-font-weight: 700;
+    --title-h1-font-style: normal;
+    --title-h2-font-family: PpNeueMontreal-Medium, sans-serif;
+    --title-h2-font-size: 48px;
+    --title-h2-line-height: 110%;
+    --title-h2-font-weight: 500;
+    --title-h2-font-style: normal;
+    --title-h3-font-family: PpNeueMontreal-Medium, sans-serif;
+    --title-h3-font-size: 40px;
+    --title-h3-line-height: 110%;
+    --title-h3-font-weight: 500;
+    --title-h3-font-style: normal;
+    --title-title1-font-family: PpNeueMontreal-Medium, sans-serif;
+    --title-title1-font-size: 32px;
+    --title-title1-line-height: 110%;
+    --title-title1-font-weight: 500;
+    --title-title1-font-style: normal;
+    --title-title2-font-family: PpNeueMontreal-Medium, sans-serif;
+    --title-title2-font-size: 28px;
+    --title-title2-line-height: 110%;
+    --title-title2-font-weight: 500;
+    --title-title2-font-style: normal;
+    --title-title3-font-family: PpNeueMontreal-Medium, sans-serif;
+    --title-title3-font-size: 24px;
+    --title-title3-line-height: 110%;
+    --title-title3-font-weight: 500;
+    --title-title3-font-style: normal;
+    --title-title4-font-family: PpNeueMontreal-Medium, sans-serif;
+    --title-title4-font-size: 20px;
+    --title-title4-line-height: 110%;
+    --title-title4-font-weight: 500;
+    --title-title4-font-style: normal;
+    --title-title5-font-family: PpNeueMontreal-Medium, sans-serif;
+    --title-title5-font-size: 16px;
+    --title-title5-line-height: 110%;
+    --title-title5-font-weight: 500;
+    --title-title5-font-style: normal;
+    --basic-big-medium-font-family: PpNeueMontreal-Medium, sans-serif;
+    --basic-big-medium-font-size: 18px;
+    --basic-big-medium-line-height: 130%;
+    --basic-big-medium-font-weight: 500;
+    --basic-big-medium-font-style: normal;
+    --basic-big-regular-font-family: PpNeueMontreal-Book, sans-serif;
+    --basic-big-regular-font-size: 18px;
+    --basic-big-regular-line-height: 130%;
+    --basic-big-regular-font-weight: 400;
+    --basic-big-regular-font-style: normal;
+    --basic-medium-medium-font-family: PpNeueMontreal-Medium, sans-serif;
+    --basic-medium-medium-font-size: 16px;
+    --basic-medium-medium-line-height: 130%;
+    --basic-medium-medium-font-weight: 500;
+    --basic-medium-medium-font-style: normal;
+    --basic-medium-regular-font-family: PpNeueMontreal-Book, sans-serif;
+    --basic-medium-regular-font-size: 16px;
+    --basic-medium-regular-line-height: 130%;
+    --basic-medium-regular-font-weight: 400;
+    --basic-medium-regular-font-style: normal;
+    --basic-small-medium-font-family: PpNeueMontreal-Medium, sans-serif;
+    --basic-small-medium-font-size: 14px;
+    --basic-small-medium-line-height: 130%;
+    --basic-small-medium-font-weight: 500;
+    --basic-small-medium-font-style: normal;
+    --basic-small-regular-font-family: PpNeueMontreal-Book, sans-serif;
+    --basic-small-regular-font-size: 14px;
+    --basic-small-regular-line-height: 130%;
+    --basic-small-regular-font-weight: 400;
+    --basic-small-regular-font-style: normal;
+    --basic-caption-font-family: PpNeueMontreal-Book, sans-serif;
+    --basic-caption-font-size: 12px;
+    --basic-caption-line-height: 130%;
+    --basic-caption-font-weight: 400;
+    --basic-caption-font-style: normal;
+}
+  

@@ -1,0 +1,124 @@
+@import url('vars.css');
+
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+    padding: var(--spacing-6);
+}
+
+.register-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-8);
+    box-shadow: var(--shadow-lg);
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+}
+
+.register-header h1 {
+    color: var(--primary-color);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-2);
+}
+
+.register-header p {
+    color: var(--gray-color);
+    font-size: var(--font-size-sm);
+}
+
+.register-form {
+    display: grid;
+    gap: var(--spacing-4);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-4);
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.register-form .form-group {
+    margin-bottom: var(--spacing-4);
+}
+
+.register-form .form-control {
+    transition: all var(--transition-fast);
+}
+
+.register-form .btn-primary {
+    width: 100%;
+    padding: var(--spacing-3);
+    font-size: var(--font-size-lg);
+    margin-top: var(--spacing-4);
+}
+
+.register-footer {
+    text-align: center;
+    margin-top: var(--spacing-6);
+    font-size: var(--font-size-sm);
+    color: var(--gray-color);
+}
+
+.register-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.register-footer a:hover {
+    color: var(--secondary-color);
+}
+
+.terms-privacy {
+    margin-top: var(--spacing-4);
+    font-size: var(--font-size-xs);
+    color: var(--gray-color);
+    text-align: center;
+}
+
+.terms-privacy a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.terms-privacy a:hover {
+    text-decoration: underline;
+}
+
+.password-requirements {
+    margin-top: var(--spacing-2);
+    font-size: var(--font-size-xs);
+    color: var(--gray-color);
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding-left: var(--spacing-4);
+    margin-top: var(--spacing-2);
+}
+
+.password-requirements li {
+    position: relative;
+    margin-bottom: var(--spacing-1);
+}
+
+.password-requirements li::before {
+    content: "•";
+    position: absolute;
+    left: -1rem;
+    color: var(--primary-color);
+}

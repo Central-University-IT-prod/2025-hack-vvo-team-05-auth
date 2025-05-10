@@ -1,0 +1,24 @@
+/* text-animation.css */
+
+/* Обёртка с маской */
+.animated-line {
+    overflow: hidden;
+    display: block;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  
+  /* Сам текст, спрятан внизу изначально */
+  .animated-line span {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  }
+  
+  /* Когда появляется на экране — запускаем анимацию */
+  .animated-line.in-view span {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
